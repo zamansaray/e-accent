@@ -1,0 +1,20 @@
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"data-toggle"=>'collapse', "data-target" => "#navbar", "aria-controls" => '.navbar'}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'Matching APP', root_path, { class: 'navbar-brand' }
+    #navbar.navbar-collapse.collapse{"aria-expanded"=>false, style: "height: 1px"}
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          - if signed_in?
+            = link_to destroy_user_session_path, method: :delete do
+              %i.fa.fa-sign-out
+              Logout
+          - else
+            = link_to new_user_session_path do
+              %i.fa.fa-sign-in
+              Login
