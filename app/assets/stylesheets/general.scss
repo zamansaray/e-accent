@@ -1,3 +1,33 @@
+body {
+  margin-top: 70px;
+}
+
 #error_explanation h2 {
   font-size: 20px
+}
+
+p.empty {
+  background-color: #eaeaea;
+  padding: 10px;
+  text-align: center;
+}
+
+.skills {
+  font-size: 1.2em;
+}
+
+.float-right {
+  float: right;
+}
+
+.form-title {
+  text-align: center;
+}
+
+.form-btn {
+  width: 100%;
+}
+
+.flash {
+  padding: 15px;
 }

@@ -8,10 +8,13 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-  <%= yield %>
+  <div class='container'>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: "bg-#{name} text-#{name} flash"%>
+    <% end -%>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 %nav.navbar.navbar-inverse.navbar-fixed-top
   .container
     .navbar-header
-      %button.navbar-toggle.collapsed{"data-toggle"=>'collapse', "data-target" => "#navbar", "aria-controls" => '.navbar'}
+      %button.navbar-toggle.collapsed{"data-toggle"=>'collapse', "data-target" => "#navbar", "aria-controls" => '#navbar'}
         %span.sr-only Toggle navigation
         %span.icon-bar
         %span.icon-bar
@@ -9,6 +9,8 @@
       = link_to 'Matching APP', root_path, { class: 'navbar-brand' }
     #navbar.navbar-collapse.collapse{"aria-expanded"=>false, style: "height: 1px"}
       %ul.nav.navbar-nav.navbar-right
+        %li
+          = link_to 'Dashboard', dashboard_path
         %li
           - if signed_in?
             = link_to destroy_user_session_path, method: :delete do
