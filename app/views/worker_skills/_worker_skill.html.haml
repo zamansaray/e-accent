@@ -1,0 +1,5 @@
+%tr
+  %td= skill.name
+  %td
+    = link_to worker_skill_path(skill), method: :delete, data: { confirm: 'Are you sure?' } do
+      %i.glyphicon.glyphicon-trash

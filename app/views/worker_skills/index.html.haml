@@ -1,0 +1,19 @@
+.row
+  .col-sm-8.col-sm-offset-2
+    .row
+      .col-sm-8
+        %h2 Skills
+      .col-sm-4
+        %h2
+          = link_to 'Choose Skill', new_worker_skill_path, class: 'btn btn-primary float-right'
+    .row.skills
+      - if @worker_skills.empty?
+        %p.empty= 'No skills yet...'
+      - else
+        %table.table.table-striped
+          %thead
+            %tr
+              %td Name
+              %td Discard
+          %tbody
+            = render partial: 'worker_skill', collection: @worker_skills, as: :skill

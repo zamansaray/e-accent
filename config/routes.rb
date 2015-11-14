@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "users/registrations" }
 
-  resource :dashboard
-  resources :skills
+  resource :dashboard, only: [:show]
+  resource :search, only: [:show]
+  resources :worker_skills, only: [:index, :new, :create, :destroy]
 end

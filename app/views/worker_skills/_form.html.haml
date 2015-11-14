@@ -1,0 +1,4 @@
+= form_tag action: 'create' do
+  .form-group
+    = collection_select :worker_skill, :id, @skills, :id, :name, {}, class: 'form-control'
+  = submit_tag 'Choose', class: 'btn btn-default float-right form-btn'
