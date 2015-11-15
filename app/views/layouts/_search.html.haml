@@ -1,0 +1,9 @@
+- if current_user and current_user.customer?
+  .row.search-form
+    .col-sm-6.col-sm-offset-3
+      = form_for(:search, url: search_path, method: :get) do |form|
+        .row
+          .col-sm-9
+            = form.collection_select :skill_ids, Skill.all, :id, :name, {}, multiple: true
+          .col-sm-3
+            = form.submit "Search", class: 'btn btn-default full-width'
