@@ -4,15 +4,17 @@ class Search
   def initialize options = {}
     @skill_ids = options
       .fetch(:skill_ids, "")
-      .select{|x| x != ''}
+      .select{|id| !id.empty?}
   end
 
   def workers
-    sql = @skill_ids.map do |skill_id|
-      "SELECT x.user_id as id FROM skills_users as x WHERE x.skill_id = #{skill_id}"
+    return [] if @skill_ids.empty?
+
+    skills_sql = @skill_ids.map do |skill_id|
+      "SELECT x.user_id FROM skills_users as x WHERE x.skill_id = #{skill_id}"
     end.join ' INTERSECT '
-    workers = ActiveRecord::Base.connection.execute(sql).map {|x| x['id']}
-    User.where id: workers
+    sql = "SELECT * FROM users INNER JOIN (#{skills_sql}) as skills ON users.id = skills.user_id"
+    User.find_by_sql sql
   end
 
 end

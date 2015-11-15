@@ -32,10 +32,6 @@ class WorkerSkillsController < ApplicationController
       flash: { success: "Skill #{action} successfully" }
   end
 
-  def find_skill
-    Skill.find resource_params[:id]
-  end
-
   def resource_params
     params.require(:worker_skill).permit(:id)
   end
